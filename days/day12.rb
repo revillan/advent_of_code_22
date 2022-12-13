@@ -60,17 +60,13 @@ end
 
 DIFFS = [[0,1], [0,-1], [1, 0], [-1, 0]]
 def bfs(grid, start, goal)
-  # grid, start, goal = parse_grid(str)
   curx, cury = start
   explored = {}
   
   explored[start] = {}
   explored[start][:dist] = 0
-  explored[start][:parent] = nil
 
   queue = [start]
-  queue.push
-  dist = 0
   
   while (queue.length > 0) do
     current = queue.shift
@@ -87,7 +83,6 @@ def bfs(grid, start, goal)
       next if grid[nextx][nexty] > cur_elevation + 1
       explored[key] = {}
       explored[key][:dist] = explored[current][:dist] + 1
-      explored[key][:partent] = current
       break if key == goal
       queue.push(key)
     end
